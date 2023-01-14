@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.user.UserFragment">
+<androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="200dp"
+    android:layout_gravity="center|top"
+    >
+    <ImageView
+        android:layout_width="400sp"
+        android:layout_height="400sp"
+        android:layout_gravity="center|top"
+        android:src="@color/purple_700"
+        /></androidx.cardview.widget.CardView>
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|bottom"
+    android:layout_marginBottom="200dp"
+    android:hint="@string/idk_write_something"
+    android:textColor="@color/black"
+    android:textStyle="bold"
+    android:textSize="20dp"
+    />
+</FrameLayout>
