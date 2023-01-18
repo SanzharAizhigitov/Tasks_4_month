@@ -15,4 +15,10 @@ android:id="@+id/add_fab"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+android:id="@+id/tasks_rv"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

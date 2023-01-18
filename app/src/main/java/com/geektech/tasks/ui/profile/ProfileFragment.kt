@@ -1,16 +1,15 @@
-package com.geektech.tasks.ui.user
+package com.geektech.tasks.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.geektech.tasks.databinding.FragmentNotificationsBinding
-import com.geektech.tasks.databinding.FragmentUserBinding
+import com.geektech.tasks.databinding.FragmentProfileBinding
 
-class UserFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentUserBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,7 +21,7 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentUserBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 

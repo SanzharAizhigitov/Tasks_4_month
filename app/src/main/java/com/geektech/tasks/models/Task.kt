@@ -1,4 +1,4 @@
-package com.geektech.tasks
+package com.geektech.tasks.models
 
 data class Task(
  var title:String?=null,

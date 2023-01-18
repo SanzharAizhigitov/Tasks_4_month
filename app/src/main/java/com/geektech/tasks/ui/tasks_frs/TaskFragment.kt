@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-import com.geektech.tasks.Task
+import com.geektech.tasks.models.Task
 import com.geektech.tasks.databinding.FragmentTaskBinding
 
 

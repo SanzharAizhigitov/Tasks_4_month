@@ -24,12 +24,17 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.geektech.tasks.ui.user.UserFragment"
-        android:label="User"
-        tools:layout="@layout/fragment_user" />
+        android:name="com.geektech.tasks.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/taskFragment"
         android:name="com.geektech.tasks.ui.tasks_frs.TaskFragment"
         android:label="Task"
         tools:layout="@layout/fragment_task" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.geektech.tasks.ui.onBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>
