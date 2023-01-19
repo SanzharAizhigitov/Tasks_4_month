@@ -9,6 +9,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/task_VP"/>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginBottom="60dp"
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        />
+
 
 
 </FrameLayout>

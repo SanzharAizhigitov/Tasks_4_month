@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.geektech.tasks.R
 import com.geektech.tasks.databinding.FragmentOnBoardingBinding
 import com.geektech.tasks.ui.onBoarding.adapter.onBoardingAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 class OnBoardingFragment : Fragment() {
 lateinit var binding: FragmentOnBoardingBinding
@@ -27,6 +28,9 @@ lateinit var binding: FragmentOnBoardingBinding
             findNavController().navigateUp()
         }
         binding.taskVP.adapter = adapter
+        TabLayoutMediator(binding.tabLayout, binding.taskVP,){ tab, position->
+
+        }
     }
 
 }

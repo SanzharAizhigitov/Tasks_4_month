@@ -14,6 +14,7 @@ app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     />
     <TextView
+        android:gravity="center"
         android:layout_marginTop="32sp"
         app:layout_constraintTop_toBottomOf="@id/onBoarding_tv"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@ app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         />
     <TextView
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title2"
