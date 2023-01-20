@@ -28,9 +28,8 @@ lateinit var binding: FragmentOnBoardingBinding
             findNavController().navigateUp()
         }
         binding.taskVP.adapter = adapter
-        TabLayoutMediator(binding.tabLayout, binding.taskVP,){ tab, position->
-
-        }
+        binding.indicator.setViewPager(binding.taskVP)
+        adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
     }
 
 }
