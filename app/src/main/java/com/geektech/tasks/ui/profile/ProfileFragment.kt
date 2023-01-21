@@ -1,32 +1,71 @@
 package com.geektech.tasks.ui.profile
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.geektech.tasks.data.Pref
 import com.geektech.tasks.databinding.FragmentProfileBinding
+import com.geektech.tasks.exte.loadImage
+
 
 class ProfileFragment : Fragment() {
+    lateinit var photo: String
+    lateinit var _binding: FragmentProfileBinding
+    lateinit var pref: Pref
+    val NAME_KEY = "name_key"
+    val PHOTO_KEY = "photo_key"
+    val AGE_KEY = "age_key"
+    private val launcher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK
+            && result.data != null
+        ) {
+            val photoUri: Uri? = result.data?.data
+photo = photoUri.toString()
+            binding.avatar.loadImage(photo)
 
-    private var _binding: FragmentProfileBinding? = null
+        }
+    }
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
-
+    private val binding get() = _binding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        pref = Pref(requireContext())
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.avatar.setOnClickListener {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
+            launcher.launch(intent)
+        }
+        binding.avatar.loadImage(pref.getString(PHOTO_KEY))
+        binding.etName.setText(pref.getString(NAME_KEY))
+        binding.etAge.setText(pref.getString(AGE_KEY))
+        binding.btnSaveName.setOnClickListener {
+            pref.putString(PHOTO_KEY, photo.toString())
+            pref.putString(NAME_KEY, binding.etName.text.toString())
+            pref.putString(AGE_KEY, binding.etAge.text.toString())
+        }
+
     }
+
 }

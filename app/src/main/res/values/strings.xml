@@ -11,4 +11,6 @@
     <string name="user">User</string>
     <string name="idk_write_something">Idk, write something</string>
     <string name="profile">Profile</string>
+    <string name="write_your_age">Write your age</string>
+    <string name="write_your_name">Write your name</string>
 </resources>
