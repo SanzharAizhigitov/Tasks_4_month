@@ -14,7 +14,7 @@
     >
     <ImageView
         android:scaleType="centerCrop"
-        android:id="@+id/avatar"
+        android:id="@+id/avatar_iv"
         android:layout_width="200sp"
         android:layout_height="200sp"
         android:layout_gravity="center|top"

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <ImageView
     android:scaleType="fitXY"
-    android:id="@+id/onBoarding_tv"
+    android:id="@+id/onBoarding_iv"
     android:layout_width="250dp"
     android:layout_height="250dp"
 app:layout_constraintStart_toStartOf="parent"
@@ -16,7 +16,7 @@ app:layout_constraintStart_toStartOf="parent"
     <TextView
         android:gravity="center"
         android:layout_marginTop="32sp"
-        app:layout_constraintTop_toBottomOf="@id/onBoarding_tv"
+        app:layout_constraintTop_toBottomOf="@id/onBoarding_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"

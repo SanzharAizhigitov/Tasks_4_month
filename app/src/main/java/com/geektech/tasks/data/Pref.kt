@@ -16,7 +16,7 @@ class Pref(private val context: Context){
         pref.edit().putString(key, data).apply()
     }
     fun getString(key: String): String{
-      return pref.getString(key, "-------").toString()
+      return pref.getString(key, "").toString()
     }
     companion object{
         const val PREF_NAME = "Task.pref"

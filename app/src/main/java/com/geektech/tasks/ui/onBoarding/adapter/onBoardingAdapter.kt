@@ -33,7 +33,7 @@ onBoard("Добавляй задачи с помощью соотвествен�
         fun bind(onBoard: onBoard) {
             binding.tvTitle2.text = onBoard.title
             binding.tvDesc2.text = onBoard.desc
-            binding.onBoardingTv.loadImage(onBoard.image.toString())
+            binding.onBoardingIv.loadImage(onBoard.image.toString())
  binding.getstartBtn.setOnClickListener{onClick()}
 
             binding.getstartBtn.isVisible = adapterPosition == data.lastIndex

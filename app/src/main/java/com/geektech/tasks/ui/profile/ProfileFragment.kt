@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.geektech.tasks.data.Pref
 import com.geektech.tasks.databinding.FragmentProfileBinding
 import com.geektech.tasks.exte.loadImage
+import com.geektech.tasks.exte.showToast
 
 
 class ProfileFragment : Fragment() {
@@ -30,7 +31,7 @@ class ProfileFragment : Fragment() {
         ) {
             val photoUri: Uri? = result.data?.data
 photo = photoUri.toString()
-            binding.avatar.loadImage(photo)
+            binding.avatarIv.loadImage(photo)
 
         }
     }
@@ -51,17 +52,21 @@ photo = photoUri.toString()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.avatar.setOnClickListener {
+        binding.avatarIv.setOnClickListener {
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             launcher.launch(intent)
         }
-        binding.avatar.loadImage(pref.getString(PHOTO_KEY))
+        if (pref.getString(PHOTO_KEY)!== ""){
+        binding.avatarIv.loadImage(pref.getString(PHOTO_KEY))}else{
+            context?.showToast("Вы не вставили фото")
+        }
         binding.etName.setText(pref.getString(NAME_KEY))
         binding.etAge.setText(pref.getString(AGE_KEY))
         binding.btnSaveName.setOnClickListener {
-            pref.putString(PHOTO_KEY, photo.toString())
+            if (photo!== ""){
+            pref.putString(PHOTO_KEY, photo)}
             pref.putString(NAME_KEY, binding.etName.text.toString())
             pref.putString(AGE_KEY, binding.etAge.text.toString())
         }
