@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.geektech.tasks.App
 import com.geektech.tasks.models.Task
 import com.geektech.tasks.databinding.FragmentTaskBinding
 
 
 class TaskFragment : Fragment() {
-  lateinit var binding: FragmentTaskBinding
+    lateinit var binding: FragmentTaskBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,11 +27,17 @@ class TaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.saveBtn.setOnClickListener {
-            setFragmentResult(RESULT_TASK, bundleOf("task" to Task(binding.etTitle.text.toString(), binding.etDesc.text.toString())))
-       findNavController().navigateUp()
+            App.db.taskDao().insert(
+                Task(
+                    title = binding.etTitle.text.toString(),
+                    description = binding.etDesc.text.toString()
+                )
+            )
+            findNavController().navigateUp()
         }
     }
-companion object{
-    const val RESULT_TASK = "result.task"
-}
+
+    companion object {
+        const val RESULT_TASK = "result.task"
+    }
 }

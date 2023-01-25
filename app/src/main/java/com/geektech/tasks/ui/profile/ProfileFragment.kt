@@ -15,7 +15,6 @@ import com.geektech.tasks.databinding.FragmentProfileBinding
 import com.geektech.tasks.exte.loadImage
 import com.geektech.tasks.exte.showToast
 
-
 class ProfileFragment : Fragment() {
     lateinit var photo: String
     lateinit var _binding: FragmentProfileBinding
@@ -30,15 +29,10 @@ class ProfileFragment : Fragment() {
             && result.data != null
         ) {
             val photoUri: Uri? = result.data?.data
-photo = photoUri.toString()
+            photo = photoUri.toString()
             binding.avatarIv.loadImage(photo)
-
         }
     }
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,15 +52,17 @@ photo = photoUri.toString()
             intent.action = Intent.ACTION_GET_CONTENT
             launcher.launch(intent)
         }
-        if (pref.getString(PHOTO_KEY)!== ""){
-        binding.avatarIv.loadImage(pref.getString(PHOTO_KEY))}else{
+        if (pref.getString(PHOTO_KEY) !== "") {
+            binding.avatarIv.loadImage(pref.getString(PHOTO_KEY))
+        } else {
             context?.showToast("Вы не вставили фото")
         }
         binding.etName.setText(pref.getString(NAME_KEY))
         binding.etAge.setText(pref.getString(AGE_KEY))
         binding.btnSaveName.setOnClickListener {
-            if (photo!== ""){
-            pref.putString(PHOTO_KEY, photo)}
+            if (photo !== "") {
+                pref.putString(PHOTO_KEY, photo)
+            }
             pref.putString(NAME_KEY, binding.etName.text.toString())
             pref.putString(AGE_KEY, binding.etAge.text.toString())
         }
