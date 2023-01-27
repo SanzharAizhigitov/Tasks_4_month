@@ -1,13 +1,12 @@
 package com.geektech.tasks.ui.onBoarding.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.geektech.tasks.databinding.ItemOnBoardingBinding
-import com.geektech.tasks.exte.loadImage
+import com.geektech.tasks.ext.loadImage
 import com.geektech.tasks.models.onBoard
 
 class onBoardingAdapter(private val onClick: () -> Unit) :

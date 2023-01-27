@@ -12,8 +12,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.geektech.tasks.data.Pref
 import com.geektech.tasks.databinding.FragmentProfileBinding
-import com.geektech.tasks.exte.loadImage
-import com.geektech.tasks.exte.showToast
+import com.geektech.tasks.ext.loadImage
+import com.geektech.tasks.ext.showToast
 
 class ProfileFragment : Fragment() {
     lateinit var photo: String

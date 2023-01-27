@@ -1,6 +1,5 @@
-package com.geektech.tasks.exte
+package com.geektech.tasks.ext
 
-import android.media.Image
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 

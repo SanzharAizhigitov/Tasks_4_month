@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.geektech.tasks.ui.tasks_frs.TaskFragment"
+        android:name="com.geektech.tasks.ui.taskFragment.TaskFragment"
         android:label="Task"
         tools:layout="@layout/fragment_task" />
     <fragment

@@ -1,6 +1,5 @@
 package com.geektech.tasks.ui.home
 
-import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.geektech.tasks.App
 import com.geektech.tasks.R
 import com.geektech.tasks.models.Task
 import com.geektech.tasks.databinding.FragmentHomeBinding
 import com.geektech.tasks.ui.home.adapter.TaskAdapter
-import com.geektech.tasks.ui.tasks_frs.TaskFragment
 
 class HomeFragment : Fragment() {
 
