@@ -12,14 +12,14 @@ import com.geektech.tasks.databinding.FragmentOnBoardingBinding
 import com.geektech.tasks.ui.onBoarding.adapter.onBoardingAdapter
 
 class OnBoardingFragment : Fragment() {
-lateinit var binding: FragmentOnBoardingBinding
-lateinit var pref: Pref
+    lateinit var binding: FragmentOnBoardingBinding
+    lateinit var pref: Pref
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
+        binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
         pref = Pref(requireContext())
         return binding.root
     }

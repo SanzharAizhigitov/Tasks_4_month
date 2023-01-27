@@ -45,26 +45,29 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.taskFragment)
         }
     }
-private fun setData(){
-    val tasks = App.db.taskDao().getAll()
-    adapter.addTasks(tasks)
-}
-private fun deleteClick(task: Task){
-    val  alertDialog = AlertDialog.Builder(requireContext())
-   alertDialog.setTitle("Delete?")
-    alertDialog.setNegativeButton("No", object : DialogInterface.OnClickListener{
-        override fun onClick(dialog: DialogInterface?, pos: Int) {
-            dialog?.cancel()
-        }
-    })
-    alertDialog.setPositiveButton("Yes", object : DialogInterface.OnClickListener{
-        override fun onClick(dialog: DialogInterface?, pos: Int) {
-            App.db.taskDao().delete(task)
-            setData()
-        }
-    })
-alertDialog.create().show()
-}
+
+    private fun setData() {
+        val tasks = App.db.taskDao().getAll()
+        adapter.addTasks(tasks)
+    }
+
+    private fun deleteClick(task: Task) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Delete?")
+        alertDialog.setNegativeButton("No", object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, pos: Int) {
+                dialog?.cancel()
+            }
+        })
+        alertDialog.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, pos: Int) {
+                App.db.taskDao().delete(task)
+                setData()
+            }
+        })
+        alertDialog.create().show()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

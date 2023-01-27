@@ -6,8 +6,8 @@ import java.io.Serializable
 
 @Entity
 data class Task(
- @PrimaryKey(autoGenerate = true)
- var id:Int? = null,
- var title:String?=null,
- var description:String?=null,
-):Serializable
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
+    var title: String? = null,
+    var description: String? = null,
+) : Serializable
