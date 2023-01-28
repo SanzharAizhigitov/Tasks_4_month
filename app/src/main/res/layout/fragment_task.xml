@@ -4,22 +4,31 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/et_title"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="12dp"
+        android:id="@+id/outlinedTextField_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
         android:hint="@string/title"
-        android:minHeight="48dp" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="12dp"
+        android:id="@+id/outlinedTextField_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
     <EditText
         android:id="@+id/et_desc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:hint="@string/description"
-        android:minHeight="48dp" />
+        android:layout_height="wrap_content" /></com.google.android.material.textfield.TextInputLayout>
 <Button
     android:text="@string/save"
     android:id="@+id/save_btn"

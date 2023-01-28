@@ -27,8 +27,8 @@ class TaskFragment : Fragment() {
         binding.saveBtn.setOnClickListener {
             App.db.taskDao().insert(
                 Task(
-                    title = binding.etTitle.text.toString(),
-                    description = binding.etDesc.text.toString()
+                    title = binding.outlinedTextFieldTitle.editText?.text.toString(),
+                    description = binding.outlinedTextFieldDesc.editText?.text.toString()
                 )
             )
             findNavController().navigateUp()

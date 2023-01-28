@@ -3,15 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<ImageView
+<com.airbnb.lottie.LottieAnimationView
     android:scaleType="fitXY"
     android:id="@+id/onBoarding_iv"
     android:layout_width="250dp"
     android:layout_height="250dp"
-app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"
+    app:lottie_autoPlay="true"
+    app:lottie_loop="true"
     />
     <TextView
         android:gravity="center"

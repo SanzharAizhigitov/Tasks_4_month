@@ -31,6 +31,7 @@ class ProfileFragment : Fragment() {
             val photoUri: Uri? = result.data?.data
             photo = photoUri.toString()
             binding.avatarIv.loadImage(photo)
+            pref.putString(PHOTO_KEY, photo)
         }
     }
     private val binding get() = _binding
@@ -60,11 +61,8 @@ class ProfileFragment : Fragment() {
         binding.etName.setText(pref.getString(NAME_KEY))
         binding.etAge.setText(pref.getString(AGE_KEY))
         binding.btnSaveName.setOnClickListener {
-            if (photo !== "") {
-                pref.putString(PHOTO_KEY, photo)
-            }
-            pref.putString(NAME_KEY, binding.etName.text.toString())
-            pref.putString(AGE_KEY, binding.etAge.text.toString())
+            pref.putString(NAME_KEY, binding.outlinedTextFieldName.editText?.text.toString())
+            pref.putString(AGE_KEY, binding.outlinedTextFieldAge.editText?.text.toString())
         }
 
     }
