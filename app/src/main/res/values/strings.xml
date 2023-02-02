@@ -13,4 +13,8 @@
     <string name="profile">Profile</string>
     <string name="write_your_age">Write your age</string>
     <string name="write_your_name">Write your name</string>
+    <string name="input_phone_number">Input phone number</string>
+    <string name="send_sms">SEND SMS</string>
+    <string name="input_code">Input code</string>
+    <string name="accept">Accept</string>
 </resources>
