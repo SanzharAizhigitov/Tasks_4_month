@@ -86,7 +86,7 @@ val  data  = it.toObjects(Task::class.java)
             override fun onClick(dialog: DialogInterface?, pos: Int) {
                 App.db.taskDao().delete(task)
                 if (FirebaseAuth.getInstance().currentUser?.uid != null ){
-                db.collection(FirebaseAuth.getInstance().currentUser?.uid!!).document(task.id.toString())
+                db.collection(FirebaseAuth.getInstance().currentUser?.uid!!).document(task.id.toString()).delete()
                 }else{findNavController().navigate(R.id.authFragment)}
                 setData()
             }
