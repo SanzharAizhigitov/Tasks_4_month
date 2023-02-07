@@ -14,6 +14,7 @@ import com.geektech.tasks.data.Pref
 import com.geektech.tasks.databinding.FragmentProfileBinding
 import com.geektech.tasks.ext.loadImage
 import com.geektech.tasks.ext.showToast
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
     lateinit var photo: String
@@ -52,6 +53,9 @@ class ProfileFragment : Fragment() {
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             launcher.launch(intent)
+        }
+        binding.btnLogOut.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
         }
         if (pref.getString(PHOTO_KEY) !== "") {
             binding.avatarIv.loadImage(pref.getString(PHOTO_KEY))

@@ -17,4 +17,5 @@
     <string name="send_sms">SEND SMS</string>
     <string name="input_code">Input code</string>
     <string name="accept">Accept</string>
+    <string name="log_out">LOG OUT</string>
 </resources>
