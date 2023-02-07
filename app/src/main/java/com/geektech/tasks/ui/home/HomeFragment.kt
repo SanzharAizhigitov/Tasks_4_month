@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = TaskAdapter(this::deleteClick)
+        adapter = TaskAdapter(this::deleteClick, this::update)
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,11 +43,11 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setDataFromServer()
         binding.tasksRv.adapter = adapter
         binding.addFab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
+        setDataFromServer()
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -93,9 +93,13 @@ val  data  = it.toObjects(Task::class.java)
         })
         alertDialog.create().show()
     }
+    private fun update(task:Task){
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

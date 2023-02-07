@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.geektech.tasks.models.Task
 import com.geektech.tasks.databinding.ItemTaskBinding
 
-class TaskAdapter(private val deleteClick: (Task) -> Unit) : Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private val deleteClick: (Task) -> Unit, private val updateClick:(Task)->Unit)  : Adapter<TaskAdapter.TaskViewHolder>() {
     private var data = arrayListOf<Task>()
     fun addTasks(list: List<Task>) {
         data.clear()

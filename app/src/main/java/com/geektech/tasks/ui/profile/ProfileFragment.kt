@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.geektech.tasks.R
 import com.geektech.tasks.data.Pref
 import com.geektech.tasks.databinding.FragmentProfileBinding
 import com.geektech.tasks.ext.loadImage
@@ -56,6 +58,7 @@ class ProfileFragment : Fragment() {
         }
         binding.btnLogOut.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(R.id.authFragment)
         }
         if (pref.getString(PHOTO_KEY) !== "") {
             binding.avatarIv.loadImage(pref.getString(PHOTO_KEY))
