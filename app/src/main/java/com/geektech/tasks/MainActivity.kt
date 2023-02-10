@@ -1,7 +1,7 @@
 package com.geektech.tasks
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
@@ -9,10 +9,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.geektech.tasks.databinding.ActivityMainBinding
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var auth= FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +35,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.taskFragment
             )
         )
+        if (auth.currentUser?.uid == null){
+            navController.navigate(R.id.authFragment)
+        }
+       // FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//Log.e("xvr", task.result)
+     //   }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         val bottomNavFragments = arrayListOf(
@@ -39,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         )
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             navView.isVisible = bottomNavFragments.contains(destination.id)
-            if (destination.id == R.id.onBoardingFragment|| destination.id == R.id.splashFragment) {
+            if (destination.id == R.id.onBoardingFragment) {
                 supportActionBar?.hide()
             } else {
                 supportActionBar?.show()

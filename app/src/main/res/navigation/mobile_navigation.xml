@@ -38,6 +38,13 @@
         tools:layout="@layout/fragment_task" >
         <argument android:name="task"
             app:argType="com.geektech.tasks.models.Task"
+            android:defaultValue="@null"
+            app:nullable="true"
+            />
+        <argument android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true"
             />
 
     </fragment>
@@ -53,7 +60,10 @@
         tools:layout="@layout/fragment_accept">
         <argument
             android:name="verId"
-            app:argType="string" />
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/authFragment"

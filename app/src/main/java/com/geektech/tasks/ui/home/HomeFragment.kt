@@ -3,6 +3,7 @@ package com.geektech.tasks.ui.home
 import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,11 +27,15 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: TaskAdapter
     private val binding get() = _binding!!
     private val db = Firebase.firestore
+    var uid: String? = null
+    var docId: String? = null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = TaskAdapter(this::deleteClick, this::update)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,10 +65,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun getTasks() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
         if (uid != null) {
-            db.collection(uid).get().addOnSuccessListener {
-val  data  = it.toObjects(Task::class.java)
+            db.collection(uid!!).get().addOnSuccessListener {
+                val data = it.toObjects(Task::class.java)
                 adapter.addTasks(data)
             }.addOnFailureListener {}
         }
@@ -85,16 +90,33 @@ val  data  = it.toObjects(Task::class.java)
         alertDialog.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, pos: Int) {
                 App.db.taskDao().delete(task)
-                if (FirebaseAuth.getInstance().currentUser?.uid != null ){
-                db.collection(FirebaseAuth.getInstance().currentUser?.uid!!).document(task.id.toString()).delete()
-                }else{findNavController().navigate(R.id.authFragment)}
+                if (FirebaseAuth.getInstance().currentUser?.uid != null) {
+                    db.collection(FirebaseAuth.getInstance().currentUser?.uid!!)
+                        .document(task.id.toString()).delete()
+                } else {
+                    findNavController().navigate(R.id.authFragment)
+                }
                 setData()
             }
         })
         alertDialog.create().show()
     }
-    private fun update(task:Task){
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun update(task: Task, pos:Int) {
+        uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (requireContext().isOnline()){
+            if (uid!=null){
+                db.collection(uid!!).get().addOnSuccessListener {
+                    val  id = it.documents[pos].id
+                    findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToTaskFragment(task, id))
+                }.addOnFailureListener{
+                    findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToTaskFragment(task))
+                }
+            }
+        }else{
+            findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToTaskFragment(task))
+        }
     }
 
     override fun onDestroyView() {
